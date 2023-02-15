@@ -8,9 +8,9 @@ const app = express();
 // Set up a MySQL connection
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'your-mysql-username',
-  password: 'your-mysql-password',
-  database: 'your-mysql-database-name'
+  user: 'root',
+  password: '',
+  database: 'scala'
 });
 
 // Connect to MySQL
