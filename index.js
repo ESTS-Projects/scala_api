@@ -40,6 +40,30 @@ app.get('/users', (req, res) => {
   });
 });
 
+// Create an API endpoint to fetch cars
+app.get('/cars', (req, res) => {
+  connection.query('SELECT id, brand, name, photo FROM cars', (err, results) => {
+    if (err) {
+      console.log('Error fetching users from MySQL:', err);
+      res.status(500).send('Error fetching users from MySQL');
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Create an API endpoint to fetch car info
+app.get('/cars/:id', (req, res) => {
+  connection.query('SELECT id, brand, name, photo FROM cars WHERE id = ' + req.params.id, (err, results) => {
+    if (err) {
+      console.log('Error fetching users from MySQL:', err);
+      res.status(500).send('Error fetching users from MySQL');
+      return;
+    }
+    res.json(results);
+  });
+});
+
 // Start the server
 const port = 3000;
 app.listen(port, () => {
